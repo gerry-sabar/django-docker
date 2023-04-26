@@ -10,6 +10,7 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
+      - dev-static-data:/vol/web
     command: >
       sh -c "
               python manage.py migrate &&
@@ -19,6 +20,7 @@ services:
       - DB_NAME=devdb
       - DB_USER=postgres
       - DB_PASS=postgres
+      - DEBUG=1
     depends_on:
       - db
     
@@ -34,3 +36,4 @@ services:
   
 volumes:
   postgres-data:
+  dev-static-data:
